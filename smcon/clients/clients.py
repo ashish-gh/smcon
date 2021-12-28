@@ -45,7 +45,9 @@ class InstaClient(Client, BaseConnector):
     All operations to insta are derived from this base class.
     """
 
-    def __init__(self) -> None:
+    def __init__(self, username: str, pasword: str, **kwargs) -> None:
+        self.username = username
+        self.password = pasword
         pass
 
     @property
