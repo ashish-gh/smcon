@@ -32,7 +32,7 @@ class User:
 
 class Client(User):
     @abstractmethod
-    def make_connection(self):
+    def connect(self):
         raise NotImplementedError
     
 
@@ -60,7 +60,7 @@ class InstaClient(Client, BaseConnector):
     def username(self, username) -> None:
         self.username = username
     
-    def make_connection(self) -> None:
+    def connect(self) -> None:
         logger.info(f"Making secure connecting using ssh/apikey or others")
 
 
