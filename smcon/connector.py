@@ -8,8 +8,3 @@ class BaseConnector(metaclass=ABCMeta):
         A base function to connect to the client. Not authenticate but to connect to client
         """
         raise NotImplementedError
-
-
-
-    
-

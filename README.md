@@ -3,7 +3,7 @@ A package to connect to multiple social media platforms.
 
 # Todo
     - class.Connector
-        - abstractmethod: 
+        - abstractmethod:
             - connect
         - InstagramConnector
             - dataclass
