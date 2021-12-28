@@ -4,6 +4,15 @@ from dataclasses import dataclass
 from typing import Iterator, Tuple
 
 
+class Headers:    
+    def default_headers(self):
+        return {
+            'User-Agent': "",
+            'Connection': 'close',
+        }
+
+        
+
 @dataclass
 class User:
     """
