@@ -18,21 +18,21 @@ class User:
     username: str = ""
     password: str = ""
 
-    @property
-    def username(self) -> str:
-        return self.username
+    # @property
+    # def username(self) -> str:
+    #     return self.username
 
-    @username.setter
-    def username(self, username) -> None:
-        self.username = username
+    # @username.setter
+    # def username(self, username) -> None:
+    #     self.username = username
 
-    @property
-    def password(self) -> str:
-        return self.password
+    # @property
+    # def password(self) -> str:
+    #     return self.password
 
-    @password.setter
-    def password(self, password) -> None:
-        self.password = password
+    # @password.setter
+    # def password(self, password) -> None:
+    #     self.password = password
 
     def to_tuple(self) -> Tuple[str, str]:
         return tuple([self.username, self.password])

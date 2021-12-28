@@ -1,4 +1,3 @@
-from smcon.client import InstaClient
+from smcon.clients.clients import InstaClient
 
-ig = InstaClient()
-ig.connect(username="ashish", password="password")
+ig = InstaClient(username="ashish", password="sd")
