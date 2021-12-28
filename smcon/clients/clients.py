@@ -53,6 +53,11 @@ class Client(User):
         Returns:        
         """
         raise NotImplementedError
+    
+    def format_response(self, 
+        response: Dict
+    ) -> Dict:
+        raise NotImplementedError
 
 
 
@@ -64,27 +69,22 @@ class InstaClient(Client, BaseConnector):
     
     def __init__(self, username: str, password: str= "", **kwargs) -> None:
         self.username = username
-        self.password = password
-        
+        self.password = password    
         # logging to insta client
         self.login()
     
+    def login(self):
+        """
+        Login to insta client        
+        """
+        if not (self.username and self.password):
+            # raise ClientLoginError()
+            raise ClientLoginError(message="login required", code=400)        
+        response = self.call_api()
+        logger.debug(f"Response : {str(response)}")
+        # CLIENTS_URL = self.get_client_url(self)    
 
-    # @property
-    # def password(self) -> str:
-    #     return self.password
 
-    # @password.setter
-    # def password(self, password) -> None:
-    #     self.password = password
-
-    # @property
-    # def username(self) -> str:
-    #     return self.username
-
-    # @username.setter
-    # def username(self, username) -> None:
-    #     self.username = username
 
     def call_api(self, 
         params: Dict = None, 
@@ -93,23 +93,15 @@ class InstaClient(Client, BaseConnector):
         ) -> Dict:
         
         logger.info(f"Connecting to {self.__class__.__name__}")
+        response = {
+            "username": self.username,
+            "password": self.password
+            }
+        return self.format_response(response)
 
-        
-
+    def format_response(self, response: Dict) -> Dict:
+        return response
     
-    def login(self):
-        """
-        Login to insta client        
-        """
-        print(self.username, self.password)
-
-        if not (self.username and self.password):
-            # raise ClientLoginError()
-            raise ClientLoginError(message="login required", code=400)        
-        self.call_api()
-        # CLIENTS_URL = self.get_client_url(self)    
-
-
 
     def make_connection(self) -> None:
         logger.info(f"Making secure connecting using ssh/apikey or others")
