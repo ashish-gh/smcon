@@ -1,11 +1,13 @@
+
+import json
+import requests
+from datetime import datetime
+
 # from smcon.clients.clients import InstaClient
 username = "gh_ashish"
 password = "AAashishghimire010#"
 # ig = InstaClient(username=username, password=password)
 
-from datetime import datetime
-import requests
-import json
 
 
 link = 'https://www.instagram.com/accounts/login/'
