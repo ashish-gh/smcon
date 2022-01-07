@@ -5,7 +5,7 @@ from datetime import datetime
 
 # from smcon.clients.clients import InstaClient
 username = "gh_ashish"
-password = "AAashishghimire010#"
+password = "..."
 # ig = InstaClient(username=username, password=password)
 
 
