@@ -45,23 +45,24 @@ class Client(User):
         return client_url
     
 
+    def get_login_prarams(self):
+        return LoginParams(self)
+       
     @property
     def login_params(self, client: str ="") -> dict:
-        
-        if not isinstance(client, str):
-            raise ValueError(f"Expected type to be `str`. Got type {str(type(client))}")
-        client = client.lower()
-
+        return self.get_login_prarams()
         # This is not efficient way to do things
 
-
-        if client in ["insta", "instagaram"]:
-            login_params = LoginParams.Insta_Params
-        elif client in ["spotify"]:
-            client_url = LoginUrl.SPOTIFY
-        else:
-            raise ValueError(f"Expected type to be ['instagram', 'spotify']. Got type {str(type(client))}")
-        return client_url
+        # if not isinstance(client, str):
+        #     raise ValueError(f"Expected type to be `str`. Got type {str(type(client))}")
+        # client = client.lower()
+        # if client in ["insta", "instagaram"]:
+        #     login_params = LoginParams.Insta_Params
+        # elif client in ["spotify"]:
+        #     client_url = LoginUrl.SPOTIFY
+        # else:
+        #     raise ValueError(f"Expected type to be ['instagram', 'spotify']. Got type {str(type(client))}")
+        # return client_url
 
     
     def get_client_url(self, client: str = "") -> str:
