@@ -255,7 +255,7 @@ if __name__ == "__main__":
     main()
 
 username ="gh_ashish"
-password = "AAashishghimire0102#"
+password = ""
 payload = {
     'username': '<USERNAME HERE>',
     'enc_password': f'#PWD_INSTAGRAM_BROWSER:0:{time}:{password}',  # <-- note the '0' - that means we want to use plain passwords
