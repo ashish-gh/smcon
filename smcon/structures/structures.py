@@ -54,3 +54,6 @@ class User:
 
     def __hash__(self) -> int:
         return hash(tuple(self.__dict__.items()))
+
+
+
