@@ -20,4 +20,5 @@ class SocailMediaConnector:
 
         # Connection logic for each of the client is dependent on it. The parent class is not dependent on it.
         # The parent class only cares to login. not how, in which url it connects to
-        client.login()
+        res = client.login()
+        print(res)
