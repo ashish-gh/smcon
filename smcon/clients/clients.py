@@ -1,4 +1,5 @@
 from __future__ import annotations
+from http import client
 
 import json
 import time
@@ -12,11 +13,20 @@ from loguru import logger
 from smcon.structures.enums import ParamsFactory
 
 from ..connector import BaseConnector
-from ..structures import ClientUrl, LoginParams, LoginUrl, User
+from ..structures import ParamsFactory, UrlFactory, User
 from .errors import ClientLoginError
 
 
 class Client(User):
+    """
+    Property
+        -
+    Methods
+        - 
+    """
+    
+    CLIENT = ""
+
     @property
     def url(self) -> str:
         return self.url
@@ -32,18 +42,16 @@ class Client(User):
         raise NotImplementedError
 
     @property
-    def login_params(self, client: str = "") -> dict:
+    def login_params(self, client: str = "") -> dict:        
+        if not client:
+            client = self.CLIENT
         return ParamsFactory.get_params(client=client)
 
     @property
-    def login_url(self) -> str:
-        return self.get_login_url()
-
-    def get_login_url(self):
-        logger.info(f"Getting login url for {self.__class__.__name__}")
-        # TODO
-        # validate the url : str, instance and all
-        return LoginUrl(self).get_url()
+    def login_url(self, client: str ="") -> str:
+        if not client:
+            client = self.CLIENT
+        return UrlFactory.get_url(client=client)
 
     @abstractmethod
     def connect(self):
@@ -157,7 +165,7 @@ class InstaClient(Client, BaseConnector):
         if not (self.username and self.password):
             raise ClientLoginError(message="login required", code=400)
         #
-        login_params = self.login_params
+        login_params = self.login_params(self.CLIENT)
         if (not login_params) or (not isinstance(login_params, dict)):
             # TODO
             # raise some error implement it

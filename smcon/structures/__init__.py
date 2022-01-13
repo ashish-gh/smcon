@@ -1,2 +1,2 @@
-from .enums import ClientUrl, LoginParams, LoginUrl
+from .enums import ParamsFactory, UrlFactory
 from .structures import User
