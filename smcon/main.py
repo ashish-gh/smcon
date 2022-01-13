@@ -1,6 +1,6 @@
 from loguru import logger
 
-from .clients.clients import Client
+from .clients.client import Client
 
 
 class SocailMediaConnector:

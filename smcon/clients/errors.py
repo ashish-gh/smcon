@@ -39,3 +39,9 @@ class ClientLoginError(ClientError):
     """
 
     pass
+
+
+class ClientConnectionError(ClientError):
+    """Raised due to network connectivity issue."""
+
+    pass

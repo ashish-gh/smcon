@@ -2,7 +2,7 @@
 # import requests
 # from datetime import datetime
 
-from smcon.clients.clients import Client, InstaClient, Spotify
+from smcon.clients.client import Client, InstaClient, Spotify
 from smcon.main import SocailMediaConnector
 
 # Implementing new client

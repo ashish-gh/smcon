@@ -1,18 +1,20 @@
 from enum import Enum
+from typing import Dict
 
 
 class ClientUrl(Enum):
     INSTA_URL = "https://www.instagram.com/"
     SPOTIFY_URL = "https://www.spotify.com/np-en/"
 
-class UrlFactory:    
+
+class UrlFactory:
     @property
     def url(self):
         return {
             "insta": "https://www.instagram.com/",
-            "spotify": "https://www.spotify.com/np-en/"
+            "spotify": "https://www.spotify.com/np-en/",
         }
-    
+
     def get_url(self, client: str = "") -> str:
         if not client:
             return ""
@@ -43,7 +45,7 @@ class ParamsFactory:
             },
         }
 
-    def get_params(self, client: str = "") -> Client:
+    def get_params(self, client: str = "") -> Dict[str, Dict]:
         if not client:
             return None
         if not isinstance(client, str):
