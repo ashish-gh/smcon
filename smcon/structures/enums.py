@@ -1,4 +1,5 @@
 from enum import Enum
+from multiprocessing.connection import Client
 
 
 
@@ -71,5 +72,35 @@ class LoginParams:
 
 
         
+class ParamsFactory:
+    @property
+    def params(self):
+        return {
+            'insta':{
+                'username': '',
+                'password': '',
+                'queryParams': {},
+                'optIntoOneTap': 'false'            
+            },
+            'spotify':{
+                'username': '',
+                'password': '',
+                'queryParams': {},
+                'optIntoOneTap': 'false'            
+            }
+        }
+
+    def get_params(self, client: str = "") -> Client:
+        if not client:
+            return None
+        if not isinstance(client, str):
+            raise TypeError(f"Expected type to be `str`. Instead got :{str(type(client))}")        
+        if client not in list(self.params.values()):
+            raise NotImplementedError(f"{client} params is not implemented.")
+        return self.params.get(client)
+
+
+
+
 
 

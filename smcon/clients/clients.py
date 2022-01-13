@@ -6,6 +6,8 @@ import requests
 from abc import abstractmethod
 from typing import Dict
 
+from smcon.structures.enums import ParamsFactory
+
 from .errors import ClientLoginError
 from ..connector import BaseConnector
 from ..structures import User, ClientUrl, LoginUrl, LoginParams
@@ -30,11 +32,8 @@ class Client(User):
            
     @property
     def login_params(self, client: str ="") -> dict:
-        return self.get_login_prarams()
+        return ParamsFactory.get_params(client=client)
     
-    def get_login_prarams(self):
-        logger.warning(self.__class__.__name__)
-        return LoginParams(self).get_params()
 
     @property
     def login_url(self) -> str:
