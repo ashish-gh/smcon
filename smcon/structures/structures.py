@@ -4,14 +4,13 @@ from dataclasses import dataclass
 from typing import Iterator, Tuple
 
 
-class Headers:    
+class Headers:
     def default_headers(self):
         return {
-            'User-Agent': "",
-            'Connection': 'close',
+            "User-Agent": "",
+            "Connection": "close",
         }
 
-        
 
 @dataclass
 class User:
@@ -54,6 +53,3 @@ class User:
 
     def __hash__(self) -> int:
         return hash(tuple(self.__dict__.items()))
-
-
-
