@@ -1,21 +1,18 @@
-
 class BaseConfig:
     URL = ""
-    BASE_URL =""
+    BASE_URL = ""
 
 
 class InstaConfig(BaseConfig):
-    URL = 'https://www.instagram.com/accounts/login/ajax/'
+    URL = "https://www.instagram.com/accounts/login/ajax/"
     BASE_URL = "https://www.instagram.com/"
-    LOGIN_URL = 'https://www.instagram.com/accounts/login/'
+    LOGIN_URL = "https://www.instagram.com/accounts/login/"
 
     @staticmethod
     def login_params(self):
         return {
-            'username': '',
-            'password': '',
-            'queryParams': {},
-            'optIntoOneTap': 'false'            
+            "username": "",
+            "password": "",
+            "queryParams": {},
+            "optIntoOneTap": "false",
         }
-
-
